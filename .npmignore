@@ -1,0 +1,9 @@
+#Ignore files on Publish
+src
+node_modules
+.git
+.gitignore
+.flowconfig
+.babelrc
+.npmignore
+npm-debug.log
