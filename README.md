@@ -1,4 +1,4 @@
-### Critiq
+# Critiq
 Critiq is a simple parameter validator useful for API building.
 
 ### Become a contributor
