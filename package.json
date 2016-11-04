@@ -1,6 +1,6 @@
 {
   "name": "critiq",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Critiq is a simple parameter validator useful for API building.",
   "main": "app/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://bitbucket.org/apihive/critiq"
+    "url": "git+https://github.com/apihive/critiq.git"
   },
   "keywords": [
     "validator",
@@ -17,7 +17,7 @@
   "author": "Rhomnick Coloma",
   "license": "ISC",
   "bugs": {
-    "url": "https://bitbucket.org/apihive/redhex/issues"
+    "url": "hhttps://github.com/apihive/critiq/issues"
   },
   "homepage": "none",
   "devDependencies": {
