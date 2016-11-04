@@ -32,7 +32,6 @@ gulp.task('babel', shell.task([
 let express;
 
 gulp.task('server',() => {
-console.log('server');
   express = server.new(paths.destination);
 });
 

@@ -1,6 +1,58 @@
 # Critiq
 Critiq is a simple parameter validator useful for API building.
 
+### Usage
+```javascript
+var Critiq = require('../app')
+```
+#### Sample Data
+```javascript
+var payload = {
+
+  email:'rhomnickcoloma@gmail.com',
+  username:'user123',
+  accountNumber: '4239937392747293',
+  address:'Some Address'
+
+}
+```
+#### Configuration
+Indicate the fields to validate -- Fields should be in the data object
+```javascript
+var config = {
+
+  email:['email','min-5','max-25'],
+  username:['alphaNum','min-5','max-15'],
+  accountNumber: ['number','max-16','min-16']
+
+}
+```
+#### Validate Data
+`PARAMETERS`
+* config - (Object) containing the fields you want to validate from the data
+* data - (Object) data set
+* callback - (function) callback is call after validation process is done.
+	##### Callback Parameters
+    * error - null if no error
+    * result - null if no error
+
+Below is an example
+```javascript
+Critiq.validate(config, payload, function(err,result){
+
+  if(err){
+    console.log(err);
+    return
+  }
+  console.log('result')
+  console.log(result)
+
+})
+
+```
+### Todos
+* Datatype validation
+* Nested validation
 ### Become a contributor
 email me at
 ```
