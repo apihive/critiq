@@ -92,7 +92,7 @@ const validate =  ( config, data, callback ) => {
       processCount++
       if(processCount == allDataCount){
         if(Errors.length > 0){
-          const err = 'Error: some parameters failed '+Errors.toString()
+          const err = 'Error: some parameters failed ['+Errors.toString()+']'
           callback(err,null)
           return
         }

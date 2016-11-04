@@ -7,7 +7,7 @@ import isInt from './int'
 */
 export default (alphaNum) => {
 
-  var regex = /^[a-z0-9]+$/
+  var regex = /^[a-zA-Z0-9_ ]+$/
 
   if( regex.test(alphaNum) ){
 

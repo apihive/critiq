@@ -2,18 +2,18 @@ var Critiq = require('../app')
 
 var payload = {
 
-  email:'rhomnickcoloma@gmail.com',
+  email:'this isIt5',
   username:'user123',
-  accountNumber: '4239937392747293',
+  accountNumber: '1478248799308',
   address:'Some Address'
 
 }
 
 var config = {
 
-  email:['email','min-5','max-25'],
+  email:['alphaNum','min-55','max-25'],
   username:['alphaNum','min-5','max-15'],
-  accountNumber: ['number','max-16','min-16']
+  accountNumber: ['number','min-10','max-16']
 
 }
 

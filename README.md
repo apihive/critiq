@@ -1,9 +1,17 @@
 # Critiq
 Critiq is a simple parameter validator useful for API building.
 
+### Installation
+```javascript
+npm install critiq --save
+```
 ### Usage
 ```javascript
-var Critiq = require('../app')
+// CommonJS
+var Critiq = require('critiq')
+
+// EcmaScript
+import Critiq from 'critiq'
 ```
 #### Sample Data
 ```javascript
@@ -34,7 +42,7 @@ var config = {
 * callback - (function) callback is call after validation process is done.
 	##### Callback Parameters
     * error - null if no error
-    * result - null if no error
+    * result - null if has error
 
 Below is an example
 ```javascript
