@@ -1,6 +1,6 @@
 import email from './libs/email'
-import string from './libs/string'
-import int from './libs/int'
+import alphabet from './libs/alphabet'
+import number from './libs/number'
 import {min,max} from './libs/length'
 import alphaNum from './libs/alphanumeric'
 
@@ -21,7 +21,7 @@ const validate =  ( config, data, callback ) => {
           }
         }
         if(conf[i] == 'string'){
-          const status = this.string(data)
+          const status = this.alphabet(data)
           if(!status){return status}
           else{
             paramCount++
@@ -29,7 +29,7 @@ const validate =  ( config, data, callback ) => {
           }
         }
         if(conf[i] == 'number'){
-          const status = this.int(data)
+          const status = this.number(data)
           if(!status){return status}
           else{
             paramCount++
@@ -67,11 +67,11 @@ const validate =  ( config, data, callback ) => {
     email: function(data){
       return email(data)
     },
-    string: function(data){
-      return string(data)
+    alphabet: function(data){
+      return alphabet(data)
     },
-    int: function(data){
-      return int(data)
+    number: function(data){
+      return number(data)
     },
     min: function(data,length){
       return min(data,length)

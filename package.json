@@ -1,6 +1,6 @@
 {
   "name": "critiq",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Critiq is a simple parameter validator useful for API building.",
   "main": "app/index.js",
   "scripts": {
@@ -8,9 +8,21 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/apihive/critiq.git"
+    "url": "git+https://github.com/apihive/critiq"
   },
   "keywords": [
+    "critiq",
+    "critique",
+    "criticise",
+    "redhex",
+    "redhex-validator",
+    "datatype-validator",
+    "string-validator",
+    "integer-validator",
+    "email-validator",
+    "alphanumeric-validator",
+    "object-validator",
+    "array-validator",
     "validator",
     "parameter-validator"
   ],

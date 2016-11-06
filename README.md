@@ -26,6 +26,23 @@ var payload = {
 ```
 #### Configuration
 Indicate the fields to validate -- Fields should be in the data object
+
+* **email** - validates an email.
+* **alphabet** - (string) that contains strictly of letters from **Aa** to **Zz** only.
+* **number** - (string) that contains strictly of numbers from **0** to **9** only.
+* **alphaNum** - accepts a string containing strictly of numbers and letters *(Non-case sensitive) (accepts space)*.
+* **min** - ['min-5'] indicates a minimum required characters.
+* **max** - ['max-25'] indicates a maximum required characters.
+
+`TODOs:`
+* Datatype validation
+* Nested validation
+* Function
+* String
+* Integer
+* Object
+* Array
+
 ```javascript
 var config = {
 
@@ -58,9 +75,6 @@ Critiq.validate(config, payload, function(err,result){
 })
 
 ```
-### Todos
-* Datatype validation
-* Nested validation
 ### Become a contributor
 email me at
 ```
