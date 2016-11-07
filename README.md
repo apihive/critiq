@@ -60,18 +60,18 @@ var config = {
 }
 ```
 
-| FORBIDDEN COMBINATIONS |
-|--|
-|['string','integer']|
-|['string','function']|
-|['string','object']|
-|['string','array']|
-|['integer','function']|
-|['integer','object']|
-|['integer','array']|
-|['array','function']|
-|['array','object']|
-|['oject','function']|
+| FORBIDDEN COMBINATIONS | NO POSSIBLE COMBINATION |
+|---|---|
+|['string','integer']|['function']|
+|['string','function']|['object']|
+|['string','object']|['array']|
+|['string','array']||
+|['integer','function']||
+|['integer','object']||
+|['integer','array']||
+|['array','function']||
+|['array','object']||
+|['oject','function']||
 
 #### Validate Data
 `PARAMETERS`
