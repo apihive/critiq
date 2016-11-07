@@ -26,17 +26,13 @@ var config = {
 
 }
 
-Critiq.validate(
-  config,
-  payload,
-  function(err,result){
+Critiq.validate(['string'], 'asdfasdf', function(err,result){
 
     if(err){
       console.log(err);
       return
     }
-    console.log('result')
+    console.log('Hooray data is valid!')
     console.log(result)
 
-  }
-)
+  })

@@ -5,6 +5,7 @@ Critiq is a simple parameter validator useful for API building.
 ```javascript
 npm install critiq --save
 ```
+
 ### Usage
 ```javascript
 // CommonJS
@@ -13,22 +14,7 @@ var Critiq = require('critiq')
 // EcmaScript
 import Critiq from 'critiq'
 ```
-#### Sample Data
-```javascript
-var payload = {
 
-  email:'rhomnickcoloma@gmail.com',
-  username:'user123',
-  accountNumber: 1478248799308456,
-  callback:function(){},
-  friends:['tina','james'],
-  education:{
-    highschool:'name of highschool',
-    college:'name of college school'
-  }
-
-}
-```
 #### Configuration
 Indicate the fields to validate -- Fields should be in the data object
 
@@ -44,8 +30,86 @@ Indicate the fields to validate -- Fields should be in the data object
 * **min** - ['min-5'] indicates a minimum required characters.
 * **max** - ['max-25'] indicates a maximum required characters.
 
-`TODOs:`
-* Nested validation
+| FORBIDDEN COMBINATIONS | NO POSSIBLE COMBINATION |
+|---|---|
+|['string','integer']|['function']|
+|['string','function']|['object']|
+|['string','object']|['array']|
+|['string','array']||
+|['integer','function']||
+|['integer','object']||
+|['integer','array']||
+|['array','function']||
+|['array','object']||
+|['oject','function']||
+
+#### Single Param Validations
+Strictly solo Datatype Validations
+
+Example **String** ( min and max are allowed )
+```javascript
+Critiq.validate(['string'], 'asdfasdf', function(err,result){})
+```
+Example **Integer** ( min and max are allowed )
+```javascript
+Critiq.validate(['integer'], 23554667, function(err,result){})
+```
+Example **Object** ( min and max are forbidden )
+```javascript
+Critiq.validate(['object'], {key:'value'}, function(err,result){})
+```
+Example **Array** ( min and max are forbidden )
+```javascript
+Critiq.validate(['array'], [1,'two',3,4,'five'], function(err,result){})
+```
+Example **Function** ( min and max are forbidden )
+```javascript
+Critiq.validate(['function'], function(){}, function(err,result){})
+```
+#### Multiple Params Validations
+```javascript
+// Example String and Number
+Critiq.validate(['string','number'], '3456547', function(err,result){})
+```
+```javascript
+// Example String and alphaNum
+Critiq.validate(['string','alphaNum'], 'aBcd3456547', function(err,result){})
+```
+```javascript
+// Example String and Number
+Critiq.validate(['string','alphaber'], 'abcdEfgHij', function(err,result){})
+```
+**Catch the Error and Result**
+```javascript
+Critiq.validate(['string'], 'asdfasdf', function(err,result){
+
+    if(err){
+      console.log(err);
+      return
+    }
+    console.log('Hooray data is valid!')
+    console.log(result)
+
+  })
+```
+
+#### Complex Validation
+```javascript
+var payload = {
+
+  email:'rhomnickcoloma@gmail.com',
+  username:'user123',
+  accountNumber: 1478248799308456,
+  callback:function(){},
+  friends:['tina','james'],
+  education:{
+    highschool:'name of highschool',
+    college:'name of college school'
+  }
+
+}
+```
+
 
 ```javascript
 var config = {
@@ -59,19 +123,6 @@ var config = {
 
 }
 ```
-
-| FORBIDDEN COMBINATIONS | NO POSSIBLE COMBINATION |
-|---|---|
-|['string','integer']|['function']|
-|['string','function']|['object']|
-|['string','object']|['array']|
-|['string','array']||
-|['integer','function']||
-|['integer','object']||
-|['integer','array']||
-|['array','function']||
-|['array','object']||
-|['oject','function']||
 
 #### Validate Data
 `PARAMETERS`
@@ -92,10 +143,12 @@ Critiq.validate(config, payload, function(err,result){
   }
   console.log('Hooray! Everything is validated')
   console.log(result)
-  
+
 })
 
 ```
+### Todos
+* Nested validation
 ### Become a contributor
 email me at
 ```
