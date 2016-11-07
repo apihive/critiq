@@ -90,9 +90,9 @@ Critiq.validate(config, payload, function(err,result){
     console.log(err);
     return
   }
-  console.log('result')
+  console.log('Hooray! Everything is validated')
   console.log(result)
-
+  
 })
 
 ```
