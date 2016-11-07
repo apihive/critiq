@@ -1,5 +1,5 @@
-import isString from './string'
-import isInt from './int'
+import isString from './alphabet'
+import isInt from './number'
 
 /**
 * @param string - (string) treated as email address

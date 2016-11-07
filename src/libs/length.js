@@ -5,7 +5,8 @@
 */
 export const min = (text,length) => {
 
-  return ( text.length >= length )
+    // console.log('min '+(text.toString().length +' = '+ length) );
+  return ( text.toString().length >= length )
 
 }
 
@@ -15,7 +16,7 @@ export const min = (text,length) => {
 * @return (Boolean)
 */
 export const max = (text,length) => {
-
-  return ( text.length <= length )
+  // console.log('max '+(text.length <= length) );
+  return ( text.toString().length <= length )
 
 }

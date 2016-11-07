@@ -19,14 +19,24 @@ var payload = {
 
   email:'rhomnickcoloma@gmail.com',
   username:'user123',
-  accountNumber: '4239937392747293',
-  address:'Some Address'
+  accountNumber: 1478248799308456,
+  callback:function(){},
+  friends:['tina','james'],
+  education:{
+    highschool:'name of highschool',
+    college:'name of college school'
+  }
 
 }
 ```
 #### Configuration
 Indicate the fields to validate -- Fields should be in the data object
 
+* **object** - ['object'] Expects an object
+* **function** - ['function'] Expects a function
+* **array** - ['array'] Expects an array
+* **string** - ['string'] Expects a string 'chracters&()$1234@'
+* **integer** - ['integer'] Expects a pure integer not a string `12345` not `"12345"`
 * **email** - validates an email.
 * **alphabet** - (string) that contains strictly of letters from **Aa** to **Zz** only.
 * **number** - (string) that contains strictly of numbers from **0** to **9** only.
@@ -35,23 +45,34 @@ Indicate the fields to validate -- Fields should be in the data object
 * **max** - ['max-25'] indicates a maximum required characters.
 
 `TODOs:`
-* Datatype validation
 * Nested validation
-* Function
-* String
-* Integer
-* Object
-* Array
 
 ```javascript
 var config = {
 
-  email:['email','min-5','max-25'],
-  username:['alphaNum','min-5','max-15'],
-  accountNumber: ['number','max-16','min-16']
+  email:['string','email','min-5','max-25'],
+  username:['string','alphaNum','min-5','max-15'],
+  accountNumber: ['integer','min-10','max-16'],
+  callback: ['function'],
+  friends: ['array'],
+  education: ['object']
 
 }
 ```
+
+| FORBIDDEN COMBINATIONS |
+|--|
+|['string','integer']|
+|['string','function']|
+|['string','object']|
+|['string','array']|
+|['integer','function']|
+|['integer','object']|
+|['integer','array']|
+|['array','function']|
+|['array','object']|
+|['oject','function']|
+
 #### Validate Data
 `PARAMETERS`
 * config - (Object) containing the fields you want to validate from the data
