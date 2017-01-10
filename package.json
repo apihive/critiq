@@ -1,6 +1,6 @@
 {
   "name": "critiq",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Critiq is a simple data validator useful for API building.",
   "main": "app/index.js",
   "scripts": {

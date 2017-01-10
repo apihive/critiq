@@ -32,21 +32,21 @@ Indicate the fields to validate -- Fields should be in the data object
 * **max** - ['max-25'] indicates a maximum required characters.
 
 #### FORBIDDEN COMBINATIONS
-> ['string','integer']
-> ['string','function']
-> ['string','object']
-> ['string','array']
-> ['integer','function']
-> ['integer','object']
-> ['integer','array']
-> ['array','function']
-> ['array','object']
-> ['oject','function']
+> * ['string','integer']
+> * ['string','function']
+> * ['string','object']
+> * ['string','array']
+> * ['integer','function']
+> * ['integer','object']
+> * ['integer','array']
+> * ['array','function']
+> * ['array','object']
+> * ['oject','function']
 
 #### NO POSSIBLE COMBINATION
-> ['function']
-> ['object']
-> ['array']
+> * ['function']
+> * ['object']
+> * ['array']
 
 #### Single Param Validations
 Strictly solo Datatype Validations
