@@ -17,7 +17,7 @@ var payload = {
 
 var config = {
 
-  email:['string','email','min-5','max-25'],
+  email:['string','email','required'],
   username:['string','alphaNum','min-5','max-15'],
   accountNumber: ['integer','min-10','max-16'],
   callback: ['function'],
@@ -26,13 +26,13 @@ var config = {
 
 }
 
-Critiq.validate(['string'], 'asdfasdf', function(err,result){
+Critiq.validate(config, payload, function(err,result){
 
     if(err){
       console.log(err);
       return
     }
     console.log('Hooray data is valid!')
-    console.log(result)
+    // console.log(result)
 
   })

@@ -13,6 +13,11 @@ const validate =  ( config, data, callback ) => {
       var paramCount = 0
       for (var i = 0; i < conf.length; i++){
         if(conf[i] == 'email'){
+          if(conf.indexOf('required') > -1 && !data ){
+            return false
+          }else if(conf.indexOf('required') == -1 && !data ){
+            return true
+          }
           const status = this.email(data)
           if(!status){return status}
           else{
@@ -21,6 +26,11 @@ const validate =  ( config, data, callback ) => {
           }
         }
         if(conf[i] == 'alphabet'){
+          if(conf.indexOf('required') > -1 && !data ){
+            return false
+          }else if(conf.indexOf('required') == -1 && !data ){
+            return true
+          }
           const status = this.alphabet(data)
           if(!status){return status}
           else{
@@ -29,6 +39,11 @@ const validate =  ( config, data, callback ) => {
           }
         }
         if(conf[i] == 'number'){
+          if(conf.indexOf('required') > -1 && !data ){
+            return false
+          }else if(conf.indexOf('required') == -1 && !data ){
+            return true
+          }
           const status = this.number(data)
           if(!status){return status}
           else{
@@ -37,6 +52,11 @@ const validate =  ( config, data, callback ) => {
           }
         }
         if(conf[i] == 'alphaNum'){
+          if(conf.indexOf('required') > -1 && !data ){
+            return false
+          }else if(conf.indexOf('required') == -1 && !data ){
+            return true
+          }
           const status = this.alphaNum(data)
           if(!status){return status}
           else{
@@ -45,6 +65,11 @@ const validate =  ( config, data, callback ) => {
           }
         }
         if(conf[i].indexOf('-') > -1){
+          if(conf.indexOf('required') > -1 && !data ){
+            return false
+          }else if(conf.indexOf('required') == -1 && !data ){
+            return true
+          }
           const arr = conf[i].split('-')
           if(arr[0] == 'min'){
             const status = this.min(data,arr[1])
@@ -65,6 +90,11 @@ const validate =  ( config, data, callback ) => {
         // Datatypes
 
         if(conf[i] == 'string'){
+          if(conf.indexOf('required') > -1 && !data ){
+            return false
+          }else if(conf.indexOf('required') == -1 && !data ){
+            return true
+          }
           const status = this.string(data)
           if(!status){return status}
           else{
@@ -73,6 +103,11 @@ const validate =  ( config, data, callback ) => {
           }
         }
         if(conf[i] == 'integer'){
+          if(conf.indexOf('required') > -1 && !data ){
+            return false
+          }else if(conf.indexOf('required') == -1 && !data ){
+            return true
+          }
           const status = this.integer(data)
           if(!status){return status}
           else{
@@ -81,6 +116,11 @@ const validate =  ( config, data, callback ) => {
           }
         }
         if(conf[i] == 'function'){
+          if(conf.indexOf('required') > -1 && !data ){
+            return false
+          }else if(conf.indexOf('required') == -1 && !data ){
+            return true
+          }
           const status = this.function(data)
           if(!status){return status}
           else{
@@ -89,6 +129,11 @@ const validate =  ( config, data, callback ) => {
           }
         }
         if(conf[i] == 'object'){
+          if(conf.indexOf('required') > -1 && !data ){
+            return false
+          }else if(conf.indexOf('required') == -1 && !data ){
+            return true
+          }
           const status = this.object(data)
           if(!status){return status}
           else{
@@ -97,12 +142,21 @@ const validate =  ( config, data, callback ) => {
           }
         }
         if(conf[i] == 'array'){
+          if(conf.indexOf('required') > -1 && !data ){
+            return false
+          }else if(conf.indexOf('required') == -1 && !data ){
+            return true
+          }
           const status = this.array(data)
           if(!status){return status}
           else{
             paramCount++
             if(paramCount == conf.length){return true}
           }
+        }
+        if(conf[i] == 'required'){
+            paramCount++
+            if(paramCount == conf.length){return true}
         }
 
         //end Datatypes

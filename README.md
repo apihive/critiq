@@ -18,6 +18,7 @@ import Critiq from 'critiq'
 #### Configuration
 Indicate the fields to validate -- Fields should be in the data object
 
+* **required** - ['required'] required fields
 * **object** - ['object'] Expects an object
 * **function** - ['function'] Expects a function
 * **array** - ['array'] Expects an array
@@ -30,18 +31,22 @@ Indicate the fields to validate -- Fields should be in the data object
 * **min** - ['min-5'] indicates a minimum required characters.
 * **max** - ['max-25'] indicates a maximum required characters.
 
-| FORBIDDEN COMBINATIONS | NO POSSIBLE COMBINATION |
-|---|---|
-|['string','integer']|['function']|
-|['string','function']|['object']|
-|['string','object']|['array']|
-|['string','array']||
-|['integer','function']||
-|['integer','object']||
-|['integer','array']||
-|['array','function']||
-|['array','object']||
-|['oject','function']||
+#### FORBIDDEN COMBINATIONS
+> ['string','integer']
+> ['string','function']
+> ['string','object']
+> ['string','array']
+> ['integer','function']
+> ['integer','object']
+> ['integer','array']
+> ['array','function']
+> ['array','object']
+> ['oject','function']
+
+#### NO POSSIBLE COMBINATION
+> ['function']
+> ['object']
+> ['array']
 
 #### Single Param Validations
 Strictly solo Datatype Validations
@@ -94,6 +99,16 @@ Critiq.validate(['string'], 'asdfasdf', function(err,result){
 ```
 
 #### Complex Validation
+
+`PARAMETERS`
+* config - (Object) containing the fields you want to validate from the data
+* data - (Object) data set
+* callback - (function) callback is call after validation process is done.
+	##### Callback Parameters
+    * error - null if no error
+    * result - null if has error
+
+Below is an example
 ```javascript
 var payload = {
 
@@ -108,33 +123,18 @@ var payload = {
   }
 
 }
-```
 
-
-```javascript
 var config = {
 
-  email:['string','email','min-5','max-25'],
-  username:['string','alphaNum','min-5','max-15'],
+  email:['string','email','min-5','max-25','required'],
+  username:['string','alphaNum','min-5','max-15','required'],
   accountNumber: ['integer','min-10','max-16'],
   callback: ['function'],
   friends: ['array'],
   education: ['object']
 
 }
-```
 
-#### Validate Data
-`PARAMETERS`
-* config - (Object) containing the fields you want to validate from the data
-* data - (Object) data set
-* callback - (function) callback is call after validation process is done.
-	##### Callback Parameters
-    * error - null if no error
-    * result - null if has error
-
-Below is an example
-```javascript
 Critiq.validate(config, payload, function(err,result){
 
   if(err){
