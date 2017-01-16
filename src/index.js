@@ -64,7 +64,7 @@ const validate =  ( config, data, callback ) => {
             if(paramCount == conf.length){return true}
           }
         }
-        if(conf[i].indexOf('-') > -1){
+        if(Type.isStr(conf[i]) && conf[i].indexOf('-') > -1){
           if(conf.indexOf('required') > -1 && !data ){
             return false
           }else if(conf.indexOf('required') == -1 && !data ){
@@ -154,6 +154,30 @@ const validate =  ( config, data, callback ) => {
             if(paramCount == conf.length){return true}
           }
         }
+        if(Type.isObj(conf[i])){
+
+          var config = conf[i]
+
+
+              var processCount = 0;
+              for (var item in config){
+                var critiq = processObject.config(data[item],config[item])
+                if(!critiq){Errors.push(item)}
+                processCount++
+                if(processCount == Object.keys(config).length){
+                  if(Errors.length > 0){
+                    const err = 'Error: some parameters failed ['+Errors.toString()+']'
+                    // callback(err,null)
+                    return err
+                  }
+                  // callback(null,JSON.stringify(data))
+                  return true
+                }
+              }
+
+          // validate( conf[i], data, callback )
+          // return true
+        }
         if(conf[i] == 'required'){
             paramCount++
             if(paramCount == conf.length){return true}
@@ -233,7 +257,8 @@ const validate =  ( config, data, callback ) => {
             if(paramCount == conf.length){return true}
           }
         }
-        if(conf[i].indexOf('-') > -1){
+        // console.log('string - ', Type.isStr(conf[i]))
+        if(Type.isStr(conf[i]) && conf[i].indexOf('-') > -1){
           const arr = conf[i].split('-')
           if(arr[0] == 'min'){
             const status = this.min(data,arr[1])

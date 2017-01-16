@@ -1,6 +1,9 @@
 # Critiq
 Critiq is a simple parameter validator useful for API building.
 
+### NEW FEATURES
+* Nested Object Validation
+
 ### Installation
 ```javascript
 npm install critiq --save
@@ -41,11 +44,10 @@ Indicate the fields to validate -- Fields should be in the data object
 > * ['integer','array']
 > * ['array','function']
 > * ['array','object']
-> * ['oject','function']
+> * ['object','function']
 
 #### NO POSSIBLE COMBINATION
 > * ['function']
-> * ['object']
 > * ['array']
 
 #### Single Param Validations
@@ -116,22 +118,34 @@ var payload = {
   username:'user123',
   accountNumber: 1478248799308456,
   callback:function(){},
-  friends:['tina','james'],
   education:{
     highschool:'name of highschool',
-    college:'name of college school'
-  }
+    college:'name of college school',
+    awards:{
+      award1:'Award1 name',
+      award2:'Award2 name',
+      award3:'Award3 name',
+    }
+  },
+  friends:['tina','james']
+
 
 }
 
 var config = {
 
-  email:['string','email','min-5','max-25','required'],
-  username:['string','alphaNum','min-5','max-15','required'],
+  email:['string','email','required'],
+  username:['string','alphaNum','min-5','max-15'],
   accountNumber: ['integer','min-10','max-16'],
   callback: ['function'],
-  friends: ['array'],
-  education: ['object']
+  education: ['object', {
+    highschool: ['string','min-500'], // has error for testing
+    college: ['string','min-5'],
+    awards:['object',{
+      award1:['number'] //has error for testing
+    }]
+  }],
+  friends: ['array']
 
 }
 
@@ -147,8 +161,7 @@ Critiq.validate(config, payload, function(err,result){
 })
 
 ```
-### Todos
-* Nested validation
+
 ### Become a contributor
 email me at
 ```
